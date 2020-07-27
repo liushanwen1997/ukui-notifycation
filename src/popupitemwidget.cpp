@@ -69,13 +69,13 @@ void popupItemWidget::initLeftUiLayout()
 //    m_pTextBodyLabel->setFixedHeight(60);
     m_pTextBodyLabel->setMaximumHeight(60);
     m_pTextBodyLabel->setAlignment(Qt::AlignVCenter);
-    m_pTextBodyLabel->setStyleSheet("QLabel{border: 1px solid rgba(255,255,0,1)}");
+//    m_pTextBodyLabel->setStyleSheet("QLabel{border: 1px solid rgba(255,255,0,1)}");
 
     /* 存放标题Label */
     m_pSummaryLabel->setFixedWidth(180);
     m_pSummaryLabel->setFixedHeight(20);
     m_pSummaryLabel->setAlignment(Qt::AlignVCenter);
-    m_pSummaryLabel->setStyleSheet("QLabel{border: 1px solid rgba(255,255,0,1)}");
+//    m_pSummaryLabel->setStyleSheet("QLabel{border: 1px solid rgba(255,255,0,1)}");
 
     m_pInfoAreaWidget = new QWidget();
     m_pInfoAreaWidget->setContentsMargins(0, 0, 0, 0);
@@ -140,12 +140,13 @@ void popupItemWidget::convertToImage(QString iconPath)
     const qreal pixelRatio = qApp->primaryScreen()->devicePixelRatio();
     QPixmap pixmap;
 
+    pixmap = QIcon::fromTheme(iconPath).pixmap(QSize(45, 45));
     if (pixmap.isNull()) {
         QString iconUrl;
         const QUrl url(iconPath);
         iconUrl = url.isLocalFile() ? url.toLocalFile() : url.url();
 
-        const QIcon &icon = QIcon::fromTheme(iconPath, QIcon::fromTheme("application-zip"));
+        const QIcon &icon = QIcon::fromTheme(iconPath, QIcon::fromTheme("unknown"));
         pixmap = icon.pixmap(QSize(45, 45));
         qDebug() << "是否进入图片处理";
     }

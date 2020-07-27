@@ -1,11 +1,9 @@
 include(src/src.pri)
 QT       += dbus svg sql
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET   = ukui-notifycation
 TEMPLATE = app
-
 CONFIG  += c++11
 
 # The following define makes your compiler emit warnings if you use
